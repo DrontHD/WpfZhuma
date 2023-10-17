@@ -23,6 +23,12 @@ namespace WpfApp.Pages
         public UserPage()
         {
             InitializeComponent();
+
+            if (Classes.Manager.MainFrame.CanGoBack)
+            {
+                Classes.Manager.MainFrame.GoBack();
+            }
         }
+
     }
 }

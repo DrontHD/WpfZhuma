@@ -9,6 +9,6 @@ namespace WpfApp.Classes
 {
     public class Manager
     {
-        public static Frame MainFraem { get; set; }
+        public static Frame MainFrame { get; set; }
     }
 }
