@@ -23,12 +23,14 @@ namespace WpfApp.Pages
         public UserPage()
         {
             InitializeComponent();
+        }
 
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
             if (Classes.Manager.MainFrame.CanGoBack)
             {
                 Classes.Manager.MainFrame.GoBack();
             }
         }
-
     }
 }

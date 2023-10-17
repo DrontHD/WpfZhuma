@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:WpfApp.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="LoginPage">
+      Title="Авторизация">
 
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"
@@ -16,7 +16,7 @@
             <TextBox x:Name="LoginTextBox"></TextBox>
             <Label Content="Пароль"></Label>
             <PasswordBox x:Name="PasswordTextBox"></PasswordBox>
-            <Grid >
+            <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>

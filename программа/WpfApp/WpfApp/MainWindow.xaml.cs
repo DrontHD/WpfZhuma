@@ -23,8 +23,8 @@ namespace WpfApp
         public MainWindow()
         {
             InitializeComponent();
-            Classes.Manager.MainFraem = MainFrame;
-            Classes.Manager.MainFraem.Navigate(new Pages.LoginPage());
+            Classes.Manager.MainFrame = MainFrame;
+            Classes.Manager.MainFrame.Navigate(new Pages.LoginPage());
         }
     }
 }

@@ -24,5 +24,15 @@ namespace WpfApp.Pages
         {
             InitializeComponent();
         }
+
+        private void RegButton_Click(object sender, RoutedEventArgs e)
+        {
+            Classes.Manager.MainFrame.Navigate(new Pages.RegisterPage());
+        }
+
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

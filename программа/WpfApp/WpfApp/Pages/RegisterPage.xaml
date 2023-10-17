@@ -6,9 +6,24 @@
       xmlns:local="clr-namespace:WpfApp.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="RegisterPage">
+      Title="Регистрация">
 
     <Grid>
-        
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="300">
+            <Label Content="Фамилия:"></Label>
+            <TextBox x:Name="LastnameTextBox"></TextBox>
+            <Label Content="Имя:"></Label>
+            <TextBox x:Name="FirstnameTextBox"></TextBox>
+            <Label Content="Отчество:"></Label>
+            <TextBox x:Name="MiddlenameTextBox"></TextBox>
+            <Label Content="Логин:"></Label>
+            <TextBox x:Name="LoginTextBox"></TextBox>
+            <Label Content="Роль:"></Label>
+            <ComboBox x:Name="RoleComboBox"></ComboBox>
+            <Label Content="Пароль:"></Label>
+            <PasswordBox x:Name="PasswordBox"></PasswordBox>
+            <Button x:Name="registrationButton" Content="Зарегистрироваться" Click="registrationButton_Click"></Button>
+            <Button x:Name="goBackButton" Content="Вернуться назад" Click="goBackButton_Click"></Button>
+        </StackPanel>
     </Grid>
 </Page>

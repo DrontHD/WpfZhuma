@@ -12,18 +12,13 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Orientation="Horizontal" 
-                    VerticalAlignment="Center" 
-                    HorizontalAlignment="Center"  Margin="5">
-            <Image Source="/Resourses/icon.png" Height="45"/>
-            <Label Content="ООО «Посуда»" FontSize="25"/>
-        </StackPanel>
-
-        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Grid.Row="1">
-
-        </Frame>
+        <Grid Grid.Row="0" Margin="5">
+            <Image Source="Resources/logo.png" Height="45"/>
+            <Label Content="ООО «Посуда»" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Grid.Row="1"></Frame>
     </Grid>
 </Window>
