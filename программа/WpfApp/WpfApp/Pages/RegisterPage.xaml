@@ -19,7 +19,7 @@
             <Label Content="Логин:"></Label>
             <TextBox x:Name="LoginTextBox"></TextBox>
             <Label Content="Роль:"></Label>
-            <!-- TODO: DisplayMemberPath в combobox--> 
+            <!-- TODO: Добавить верный DisplayMemberPath в СomboBox--> 
             <ComboBox x:Name="RoleComboBox" DisplayMemberPath=""></ComboBox>
             <Label Content="Пароль:"></Label>
             <PasswordBox x:Name="PasswordBox"></PasswordBox>
