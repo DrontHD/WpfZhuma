@@ -61,6 +61,8 @@ namespace WpfApp.Pages
                     MessageBox.Show(errors.ToString(), "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
 
+                // TODO: Как будет связь с БД отредачить
+
                 //var temp = RoleComboBox.SelectedItem as Data.Roles;
                 //var selectedItem = Data.test2Ent.GetContext().Roles.Where(d => d.nameRole == temp.nameRole).FirstOrDefault();
 

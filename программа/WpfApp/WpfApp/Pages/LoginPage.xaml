@@ -15,7 +15,7 @@
             <Label Content="Логин"></Label>
             <TextBox x:Name="LoginTextBox"></TextBox>
             <Label Content="Пароль"></Label>
-            <PasswordBox x:Name="PasswordTextBox"></PasswordBox>
+            <PasswordBox x:Name="PasswordBox"></PasswordBox>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>

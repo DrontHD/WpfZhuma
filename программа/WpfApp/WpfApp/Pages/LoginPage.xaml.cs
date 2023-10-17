@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -32,7 +33,23 @@ namespace WpfApp.Pages
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                // TODO: Потом true из if надо убрать как связь с БД будет
+                if (/*Data.test2Ent.GetContext().Users.Any(d => d.login == LoginTextBox.Text && d.password == PasswordBox.Password)*/true)
+                {
+                    Classes.Manager.MainFrame.Navigate(new Pages.UserPage());
+                    MessageBox.Show("Успешный вход", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Неверный логин/пароль", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            } 
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }
