@@ -19,7 +19,8 @@
             <Label Content="Логин:"></Label>
             <TextBox x:Name="LoginTextBox"></TextBox>
             <Label Content="Роль:"></Label>
-            <ComboBox x:Name="RoleComboBox"></ComboBox>
+            <!-- TODO: DisplayMemberPath в combobox--> 
+            <ComboBox x:Name="RoleComboBox" DisplayMemberPath=""></ComboBox>
             <Label Content="Пароль:"></Label>
             <PasswordBox x:Name="PasswordBox"></PasswordBox>
             <Button x:Name="registrationButton" Content="Зарегистрироваться" Click="registrationButton_Click"></Button>
