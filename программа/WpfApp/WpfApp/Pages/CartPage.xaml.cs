@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace WpfApp.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для GuestPage.xaml
+    /// Логика взаимодействия для CartPage.xaml
     /// </summary>
-    public partial class GuestPage : Page
+    public partial class CartPage : Page
     {
-        public GuestPage()
+        public CartPage()
         {
             InitializeComponent();
         }
