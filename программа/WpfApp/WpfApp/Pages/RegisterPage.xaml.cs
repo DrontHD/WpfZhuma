@@ -59,6 +59,7 @@ namespace WpfApp.Pages
                 if (errors.Length > 0)
                 {
                     MessageBox.Show(errors.ToString(), "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
                 }
 
                 // TODO: Как будет связь с БД отредачить
