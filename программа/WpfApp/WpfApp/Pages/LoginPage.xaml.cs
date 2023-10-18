@@ -39,18 +39,31 @@ namespace WpfApp.Pages
                 if (/*Data.test2Ent.GetContext().Users.Any(d => d.login == LoginTextBox.Text && d.password == PasswordBox.Password)*/true)
                 {
                     Classes.Manager.Login = LoginTextBox.Text;
+                    // TODO: При выходе убрать ФИО пользователя, в MainWindow поменять в currentAccountLabel свойство Visability на Hidden
+                    
+                    
+                    //MainWindow.ShowCurrentUser(); // TODO: не работает
+                    
+                    
                     Classes.Manager.MainFrame.Navigate(new Pages.UserPage());
                     MessageBox.Show("Успешный вход", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {
                     MessageBox.Show("Неверный логин/пароль", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+
                 }
             } 
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        // TODO: Сделать капчу после первой попытки неуспешной авторизации
+        private void Captcha()
+        {
+            //CAPTCHA.Source = "";
         }
     }
 }

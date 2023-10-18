@@ -16,11 +16,10 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Margin="5">
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" 
-                        HorizontalAlignment="Center">
-                <Label Margin="0,0,5,0" Content="ООО «Посуда»" FontSize="25" />
-                <Image Source="Resources/logo.png" Height="45"/>
-            </StackPanel>
+            <Label Content="ООО «Посуда»" FontSize="25" />
+            <Image Margin="50,0,0,0" Source="Resources/logo.png" Height="45"/>
+            <!--Скрытая панель ФИО текущего пользователя-->
+            <Label x:Name="currentAccountLabel" Margin="0,0,50,0" HorizontalAlignment="Right" Visibility="Hidden"></Label>
         </Grid>
         <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Grid.Row="1"></Frame>
     </Grid>
