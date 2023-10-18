@@ -38,6 +38,7 @@ namespace WpfApp.Pages
                 // TODO: Потом true из if надо убрать как связь с БД будет
                 if (/*Data.test2Ent.GetContext().Users.Any(d => d.login == LoginTextBox.Text && d.password == PasswordBox.Password)*/true)
                 {
+                    Classes.Manager.Login = LoginTextBox.Text;
                     Classes.Manager.MainFrame.Navigate(new Pages.UserPage());
                     MessageBox.Show("Успешный вход", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
                 }

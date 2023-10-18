@@ -10,6 +10,7 @@
 
     <Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Label x:Name="Greeting"></Label>
             <Button x:Name="BackButton" Content="Вернутся назад" Click="BackButton_Click" Width="300"></Button>
         </StackPanel>
     </Grid>
