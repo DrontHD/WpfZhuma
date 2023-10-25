@@ -18,11 +18,10 @@
             <TextBox x:Name="MiddlenameTextBox"></TextBox>
             <Label Content="Логин:"></Label>
             <TextBox x:Name="LoginTextBox"></TextBox>
-            <Label Content="Роль:"></Label>
-            <!-- TODO: Добавить верный DisplayMemberPath в СomboBox--> 
-            <ComboBox x:Name="RoleComboBox" DisplayMemberPath="Role"></ComboBox>
             <Label Content="Пароль:"></Label>
             <PasswordBox x:Name="PasswordBox"></PasswordBox>
+            <Label Content="Роль:"></Label>
+            <ComboBox x:Name="RoleComboBox" DisplayMemberPath="Role"></ComboBox>
             <Button x:Name="registrationButton" Content="Зарегистрироваться" Click="registrationButton_Click"></Button>
             <Button x:Name="goBackButton" Content="Вернуться назад" Click="goBackButton_Click"></Button>
         </StackPanel>

@@ -80,6 +80,7 @@ namespace WpfApp.Pages
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                Captcha();
             }
         }
 

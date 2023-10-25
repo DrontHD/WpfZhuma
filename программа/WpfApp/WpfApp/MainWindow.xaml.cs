@@ -27,7 +27,6 @@ namespace WpfApp
             Classes.Manager.MainFrame.Navigate(new Pages.LoginPage());
         }
 
-
         // TODO: Не работает отображение пользователя
         public void ShowCurrentUser()
         {
@@ -35,7 +34,6 @@ namespace WpfApp
             string firstname = Classes.Manager.CurrentUser.First_name;
             string middlename = Classes.Manager.CurrentUser.Middle_name;
             currentAccountLabel.Content = $"{lastname} {firstname} {middlename}";
-            return;
         }
     }
 }
