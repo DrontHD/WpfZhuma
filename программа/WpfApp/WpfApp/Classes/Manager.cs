@@ -10,6 +10,6 @@ namespace WpfApp.Classes
     public class Manager
     {   
         public static Frame MainFrame { get; set; }
-        public static string Login { get; set; }
+        public static Data.Staff CurrentUser { get; set; }
     }
 }

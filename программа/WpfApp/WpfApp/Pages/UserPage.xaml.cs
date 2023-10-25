@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp.Data;
 
 namespace WpfApp.Pages
 {
@@ -28,11 +29,9 @@ namespace WpfApp.Pages
             try
             {
                 int currHour = Convert.ToInt32(DateTime.Now.ToString("HH"));
-                string login = Classes.Manager.Login;
-                // TODO: как будет связь поменять коммент
-                string lastname = "Амирханов";      //Data.test2Entities.GetContext().Users.Where(d => d.login == login).Select(d => d.lastName).FirstOrDefault();
-                string firstname = "Мухтар";        //Data.test2Entities.GetContext().Users.Where(d => d.login == login).Select(d => d.firstName).FirstOrDefault();
-                string middlename = "Саламович";    //Data.test2Entities.GetContext().Users.Where(d => d.login == login).Select(d => d.middleName).FirstOrDefault();
+                string lastname = Classes.Manager.CurrentUser.Last_name.ToString();
+                string firstname = Classes.Manager.CurrentUser.First_name.ToString();
+                string middlename = Classes.Manager.CurrentUser.Middle_name.ToString();
                 if (currHour >= 0 && currHour < 6)
                 {
                     Greeting.Content = $"Доброй ночи, {lastname} {firstname} {middlename}!";
@@ -56,7 +55,7 @@ namespace WpfApp.Pages
             }
         }
 
-        private void BackButton_Click(object sender, RoutedEventArgs e)
+        private void GoBackButton_Click(object sender, RoutedEventArgs e)
         {
             if (Classes.Manager.MainFrame.CanGoBack)
             {

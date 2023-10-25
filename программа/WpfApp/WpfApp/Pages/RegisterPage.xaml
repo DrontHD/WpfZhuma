@@ -20,7 +20,7 @@
             <TextBox x:Name="LoginTextBox"></TextBox>
             <Label Content="Роль:"></Label>
             <!-- TODO: Добавить верный DisplayMemberPath в СomboBox--> 
-            <ComboBox x:Name="RoleComboBox" DisplayMemberPath=""></ComboBox>
+            <ComboBox x:Name="RoleComboBox" DisplayMemberPath="Role"></ComboBox>
             <Label Content="Пароль:"></Label>
             <PasswordBox x:Name="PasswordBox"></PasswordBox>
             <Button x:Name="registrationButton" Content="Зарегистрироваться" Click="registrationButton_Click"></Button>

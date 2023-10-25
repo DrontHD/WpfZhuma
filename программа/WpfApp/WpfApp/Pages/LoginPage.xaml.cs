@@ -35,23 +35,46 @@ namespace WpfApp.Pages
         {
             try
             {
-                // TODO: Потом true из if надо убрать как связь с БД будет
-                if (/*Data.test2Ent.GetContext().Users.Any(d => d.login == LoginTextBox.Text && d.password == PasswordBox.Password)*/true)
+                StringBuilder errors = new StringBuilder();
+                if (string.IsNullOrEmpty(LoginTextBox.Text))
                 {
-                    Classes.Manager.Login = LoginTextBox.Text;
+                    errors.AppendLine("Заполните логин");
+                }
+                if (string.IsNullOrEmpty(PasswordBox.Password))
+                {
+                    errors.AppendLine("Заполните пароль");
+                }
+                if (errors.Length > 0)
+                {
+                    MessageBox.Show(errors.ToString(), "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Captcha();
+                }
+
+                if (Data.PosudaDBEntities.GetContext().Staff.Any(d => d.Login == LoginTextBox.Text && d.Password == PasswordBox.Password))
+                {
                     // TODO: При выходе убрать ФИО пользователя, в MainWindow поменять в currentAccountLabel свойство Visability на Hidden
-                    
-                    
                     //MainWindow.ShowCurrentUser(); // TODO: не работает
                     
-                    
-                    Classes.Manager.MainFrame.Navigate(new Pages.UserPage());
+                    Classes.Manager.CurrentUser = Data.PosudaDBEntities.GetContext().Staff
+                        .Where(d => d.Login == LoginTextBox.Text && d.Password == PasswordBox.Password).FirstOrDefault();
                     MessageBox.Show("Успешный вход", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                    switch (Classes.Manager.CurrentUser.ID_Role)
+                    {
+                        case 1: //Администратор
+                            Classes.Manager.MainFrame.Navigate(new Pages.AdminPage());
+                            break;
+                        case 2: //Клиент
+                            Classes.Manager.MainFrame.Navigate(new Pages.UserPage());
+                            break;
+                        case 3: //Менеджер
+                            Classes.Manager.MainFrame.Navigate(new Pages.ManagerPage());
+                            break;
+                    }
                 }
                 else
                 {
                     MessageBox.Show("Неверный логин/пароль", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-
+                    Captcha();
                 }
             } 
             catch (Exception ex)

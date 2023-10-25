@@ -53,8 +53,17 @@
     <ApplicationIcon>Resources\logo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -82,6 +91,42 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Classes\Manager.cs" />
+    <Compile Include="Data\Employee_role.cs">
+      <DependentUpon>PosudaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Orders.cs">
+      <DependentUpon>PosudaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Order_Information.cs">
+      <DependentUpon>PosudaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Points_Issuance.cs">
+      <DependentUpon>PosudaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PosudaDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PosudaDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PosudaDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PosudaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PosudaDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PosudaDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Product_Categories.cs">
+      <DependentUpon>PosudaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Staff.cs">
+      <DependentUpon>PosudaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Warehouse.cs">
+      <DependentUpon>PosudaDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -95,6 +140,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\LoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ManagerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -120,6 +169,9 @@
     </Compile>
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ManagerPage.xaml.cs">
+      <DependentUpon>ManagerPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
@@ -147,6 +199,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="Data\PosudaDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PosudaDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Data\PosudaDB.edmx.diagram">
+      <DependentUpon>PosudaDB.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -156,7 +216,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Data\" />
+    <Content Include="Data\PosudaDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PosudaDB.edmx</DependentUpon>
+      <LastGenOutput>PosudaDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\PosudaDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PosudaDB.edmx</DependentUpon>
+      <LastGenOutput>PosudaDB.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\logo.png" />
@@ -175,6 +244,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

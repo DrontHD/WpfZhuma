@@ -1,0 +1,434 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище PosudaDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Employee role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "DB.dbo.Order_Information" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Order_Information">
+          <Key>
+            <PropertyRef Name="Order_Number" />
+            <PropertyRef Name="Product" />
+            <PropertyRef Name="Quantity" />
+          </Key>
+          <Property Name="Order_Number" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Product" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="Order_Information" />
+          </Key>
+          <Property Name="Order_Information" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Order_date" Type="date" />
+          <Property Name="Delivery_date" Type="date" />
+          <Property Name="Points_Issuance" Type="int" />
+          <Property Name="Last_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="First_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Middle_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Code_get" Type="int" />
+        </EntityType>
+        <EntityType Name="Points_Issuance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Index" Type="nvarchar" MaxLength="9" />
+          <Property Name="City" Type="nvarchar(max)" />
+          <Property Name="Street" Type="nvarchar(max)" />
+          <Property Name="House" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Product Categories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Product" Type="nchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Last_name" Type="nvarchar" MaxLength="30" />
+          <Property Name="First_name" Type="nvarchar" MaxLength="30" />
+          <Property Name="Middle_name" Type="nvarchar" MaxLength="30" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_Role" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "DB.dbo.Warehouse" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Warehouse">
+          <Key>
+            <PropertyRef Name="Current_discount" />
+          </Key>
+          <Property Name="Product_category" Type="int" />
+          <Property Name="Current_discount" Type="int" Nullable="false" />
+          <Property Name="Quantity_in_stock" Type="int" />
+          <Property Name="Description" Type="text" />
+          <Property Name="Product_code" Type="nchar" MaxLength="30" />
+          <Property Name="Product Image" Type="image" />
+        </EntityType>
+        <Association Name="FK_Order_Information_Orders">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+          <End Role="Order_Information" Type="Self.Order_Information" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="Order_Information" />
+            </Principal>
+            <Dependent Role="Order_Information">
+              <PropertyRef Name="Order_Number" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Points_Issuance">
+          <End Role="Points_Issuance" Type="Self.Points_Issuance" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Points_Issuance">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="Points_Issuance" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_Employee role">
+          <End Role="Employee role" Type="Self.Employee role" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="ID_Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Warehouse_Product categories">
+          <End Role="Product Categories" Type="Self.Product Categories" Multiplicity="0..1" />
+          <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product Categories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Warehouse">
+              <PropertyRef Name="Product_category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище PosudaDBModelContainer">
+          <EntitySet Name="Employee role" EntityType="Self.Employee role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Points_Issuance" EntityType="Self.Points_Issuance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product Categories" EntityType="Self.Product Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order_Information" EntityType="Self.Order_Information" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Order_Information].[Order_Number] AS [Order_Number], 
+    [Order_Information].[Product] AS [Product], 
+    [Order_Information].[Quantity] AS [Quantity], 
+    [Order_Information].[Id] AS [Id]
+    FROM [dbo].[Order_Information] AS [Order_Information]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Warehouse" EntityType="Self.Warehouse" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Warehouse].[Product_category] AS [Product_category], 
+    [Warehouse].[Current_discount] AS [Current_discount], 
+    [Warehouse].[Quantity_in_stock] AS [Quantity_in_stock], 
+    [Warehouse].[Description] AS [Description], 
+    [Warehouse].[Product_code] AS [Product_code], 
+    [Warehouse].[Product Image] AS [Product Image]
+    FROM [dbo].[Warehouse] AS [Warehouse]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Order_Information_Orders" Association="Self.FK_Order_Information_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Order_Information" EntitySet="Order_Information" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Points_Issuance" Association="Self.FK_Orders_Points_Issuance">
+            <End Role="Points_Issuance" EntitySet="Points_Issuance" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_Employee role" Association="Self.FK_Staff_Employee role">
+            <End Role="Employee role" EntitySet="Employee role" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Warehouse_Product categories" Association="Self.FK_Warehouse_Product categories">
+            <End Role="Product Categories" EntitySet="Product Categories" />
+            <End Role="Warehouse" EntitySet="Warehouse" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PosudaDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Employee_role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK_Staff_Employee_role" FromRole="Employee_role" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="Order_Information" />
+          </Key>
+          <Property Name="Order_Information" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Order_date" Type="DateTime" Precision="0" />
+          <Property Name="Delivery_date" Type="DateTime" Precision="0" />
+          <Property Name="Points_Issuance" Type="Int32" />
+          <Property Name="Last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="First_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Middle_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Code_get" Type="Int32" />
+          <NavigationProperty Name="Order_Information1" Relationship="Self.FK_Order_Information_Orders" FromRole="Orders" ToRole="Order_Information" />
+          <NavigationProperty Name="Points_Issuance1" Relationship="Self.FK_Orders_Points_Issuance" FromRole="Orders" ToRole="Points_Issuance" />
+        </EntityType>
+        <EntityType Name="Points_Issuance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Index" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Street" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="House" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Points_Issuance" FromRole="Points_Issuance" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Product_Categories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Product" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Warehouse" Relationship="Self.FK_Warehouse_Product_categories" FromRole="Product_Categories" ToRole="Warehouse" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Last_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="First_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Middle_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_Role" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employee_role" Relationship="Self.FK_Staff_Employee_role" FromRole="Staff" ToRole="Employee_role" />
+        </EntityType>
+        <EntityType Name="Order_Information">
+          <Key>
+            <PropertyRef Name="Order_Number" />
+            <PropertyRef Name="Product" />
+            <PropertyRef Name="Quantity" />
+          </Key>
+          <Property Name="Order_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Product" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Information_Orders" FromRole="Order_Information" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Warehouse">
+          <Key>
+            <PropertyRef Name="Current_discount" />
+          </Key>
+          <Property Name="Product_category" Type="Int32" />
+          <Property Name="Current_discount" Type="Int32" Nullable="false" />
+          <Property Name="Quantity_in_stock" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Product_code" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Product_Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Product_Categories" Relationship="Self.FK_Warehouse_Product_categories" FromRole="Warehouse" ToRole="Product_Categories" />
+        </EntityType>
+        <Association Name="FK_Staff_Employee_role">
+          <End Role="Employee_role" Type="Self.Employee_role" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee_role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="ID_Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Information_Orders">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+          <End Role="Order_Information" Type="Self.Order_Information" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="Order_Information" />
+            </Principal>
+            <Dependent Role="Order_Information">
+              <PropertyRef Name="Order_Number" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Points_Issuance">
+          <End Role="Points_Issuance" Type="Self.Points_Issuance" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Points_Issuance">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="Points_Issuance" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Warehouse_Product_categories">
+          <End Role="Product_Categories" Type="Self.Product_Categories" Multiplicity="0..1" />
+          <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Categories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Warehouse">
+              <PropertyRef Name="Product_category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PosudaDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Employee_role" EntityType="Self.Employee_role" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" />
+          <EntitySet Name="Points_Issuance" EntityType="Self.Points_Issuance" />
+          <EntitySet Name="Product_Categories" EntityType="Self.Product_Categories" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" />
+          <EntitySet Name="Order_Information" EntityType="Self.Order_Information" />
+          <EntitySet Name="Warehouse" EntityType="Self.Warehouse" />
+          <AssociationSet Name="FK_Staff_Employee_role" Association="Self.FK_Staff_Employee_role">
+            <End Role="Employee_role" EntitySet="Employee_role" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Information_Orders" Association="Self.FK_Order_Information_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Order_Information" EntitySet="Order_Information" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Points_Issuance" Association="Self.FK_Orders_Points_Issuance">
+            <End Role="Points_Issuance" EntitySet="Points_Issuance" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Warehouse_Product_categories" Association="Self.FK_Warehouse_Product_categories">
+            <End Role="Product_Categories" EntitySet="Product_Categories" />
+            <End Role="Warehouse" EntitySet="Warehouse" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище PosudaDBModelContainer" CdmEntityContainer="PosudaDBEntities">
+          <EntitySetMapping Name="Employee_role">
+            <EntityTypeMapping TypeName="PosudaDBModel.Employee_role">
+              <MappingFragment StoreEntitySet="Employee role">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="PosudaDBModel.Orders">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="Order_Information" ColumnName="Order_Information" />
+                <ScalarProperty Name="Order_date" ColumnName="Order_date" />
+                <ScalarProperty Name="Delivery_date" ColumnName="Delivery_date" />
+                <ScalarProperty Name="Points_Issuance" ColumnName="Points_Issuance" />
+                <ScalarProperty Name="Last_name" ColumnName="Last_name" />
+                <ScalarProperty Name="First_name" ColumnName="First_name" />
+                <ScalarProperty Name="Middle_name" ColumnName="Middle_name" />
+                <ScalarProperty Name="Code_get" ColumnName="Code_get" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Points_Issuance">
+            <EntityTypeMapping TypeName="PosudaDBModel.Points_Issuance">
+              <MappingFragment StoreEntitySet="Points_Issuance">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Index" ColumnName="Index" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="House" ColumnName="House" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product_Categories">
+            <EntityTypeMapping TypeName="PosudaDBModel.Product_Categories">
+              <MappingFragment StoreEntitySet="Product Categories">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Product" ColumnName="Product" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staff">
+            <EntityTypeMapping TypeName="PosudaDBModel.Staff">
+              <MappingFragment StoreEntitySet="Staff">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Last_name" ColumnName="Last_name" />
+                <ScalarProperty Name="First_name" ColumnName="First_name" />
+                <ScalarProperty Name="Middle_name" ColumnName="Middle_name" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ID_Role" ColumnName="ID_Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order_Information">
+            <EntityTypeMapping TypeName="PosudaDBModel.Order_Information">
+              <MappingFragment StoreEntitySet="Order_Information">
+                <ScalarProperty Name="Order_Number" ColumnName="Order_Number" />
+                <ScalarProperty Name="Product" ColumnName="Product" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Warehouse">
+            <EntityTypeMapping TypeName="PosudaDBModel.Warehouse">
+              <MappingFragment StoreEntitySet="Warehouse">
+                <ScalarProperty Name="Product_category" ColumnName="Product_category" />
+                <ScalarProperty Name="Current_discount" ColumnName="Current_discount" />
+                <ScalarProperty Name="Quantity_in_stock" ColumnName="Quantity_in_stock" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Product_code" ColumnName="Product_code" />
+                <ScalarProperty Name="Product_Image" ColumnName="Product Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

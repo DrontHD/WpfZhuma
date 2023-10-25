@@ -24,6 +24,8 @@ namespace WpfApp.Pages
         public RegisterPage()
         {
             InitializeComponent();
+
+            RoleComboBox.ItemsSource = Data.PosudaDBEntities.GetContext().Employee_role.ToList();
         }
 
         private void registrationButton_Click(object sender, RoutedEventArgs e)
@@ -31,7 +33,8 @@ namespace WpfApp.Pages
             try
             {
                 StringBuilder errors = new StringBuilder();
-                if (string.IsNullOrEmpty(LastnameTextBox.Text))
+                //Мб не нужно
+                /*if (string.IsNullOrEmpty(LastnameTextBox.Text))
                 {
                     errors.AppendLine("Заполните фамилию");
                 }
@@ -42,7 +45,7 @@ namespace WpfApp.Pages
                 if (string.IsNullOrEmpty(MiddlenameTextBox.Text))
                 {
                     errors.AppendLine("Заполните отчество");
-                }
+                }*/
                 if (string.IsNullOrEmpty(LoginTextBox.Text))
                 {
                     errors.AppendLine("Заполните логин");
@@ -62,25 +65,23 @@ namespace WpfApp.Pages
                     return;
                 }
 
-                // TODO: Как будет связь с БД отредачить
+                var temp = RoleComboBox.SelectedItem as Data.Employee_role;
+                var selectedItem = Data.PosudaDBEntities.GetContext().Employee_role.Where(d => d.Role == temp.Role).FirstOrDefault();
 
-                //var temp = RoleComboBox.SelectedItem as Data.Roles;
-                //var selectedItem = Data.test2Ent.GetContext().Roles.Where(d => d.nameRole == temp.nameRole).FirstOrDefault();
+                Data.Staff staff = new Data.Staff()
+                {
+                    Last_name = LastnameTextBox.Text,
+                    First_name = FirstnameTextBox.Text,
+                    Middle_name = MiddlenameTextBox.Text,
+                    Login = LoginTextBox.Text,
+                    Password = PasswordBox.Password,
+                    ID_Role = selectedItem.Id
+                };
 
-                //Data.Users users = new Data.Users()
-                //{
-                //    role = selectedItem.id,
-                //    lastName = LastnameTextBox.Text,
-                //    firstName = FirstnameTextBox.Text,
-                //    middleName = MiddlenameTextBox.Text,
-                //    login = LoginTextBox.Text,
-                //    password = PasswordBox.Password
-                //};
+                Data.PosudaDBEntities.GetContext().Staff.Add(staff);
+                Data.PosudaDBEntities.GetContext().SaveChanges();
 
-                //Data.test2Ent.GetContext().Users.Add(users);
-                //Data.test2Ent.GetContext().SaveChanges();
-
-                MessageBox.Show("Успешно", "Успех!", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Вы успешно зарегистрировались", "Успех!", MessageBoxButton.OK, MessageBoxImage.Information);
             } 
             catch (Exception ex)
             {
