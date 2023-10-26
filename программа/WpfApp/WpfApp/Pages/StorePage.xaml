@@ -9,6 +9,88 @@
       Title="Магазин">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <!-- Поиск по вводимому значению:  -->
+            <Label Content="Поиск: " HorizontalAlignment="Left"
+                   Margin="20,0,0,0"/>
+            <TextBox x:Name="NameTextBox" 
+                  HorizontalAlignment="Left"
+                  Width="300"
+                  Margin="120,0,0,0"
+                  SelectionChanged="NameTextBox_SelectionChanged"
+                  ></TextBox>
+            <!-- Сортировка по цене:  -->
+            <ComboBox x:Name="PriceComboBox" 
+                  DisplayMemberPath="Name"
+                  HorizontalAlignment="Right"
+                  Width="150"
+                  Margin="0,0,200,0"
+                  SelectionChanged="PriceComboBox_SelectionChanged"
+                  ></ComboBox>
+            <!-- Сортировка по производителю:  -->
+            <ComboBox x:Name="CreatorComboBox" 
+                  DisplayMemberPath="Name"
+                  HorizontalAlignment="Right"
+                  Width="150"
+                  Margin="0,0,20,0"
+                  SelectionChanged="CreatorComboBox_SelectionChanged"
+                  ></ComboBox>
+
+        </Grid>
+        <ListView x:Name="EventListView"
+              Grid.Row="1" Margin="10">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300" ></ColumnDefinition>
+                            <ColumnDefinition Width="500"></ColumnDefinition>
+                            <ColumnDefinition Width="150"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="{Binding ImageData}"
+                           Grid.Column="0"
+                           Margin="10"></Image>
+                        <StackPanel Orientation="Vertical" 
+                                Grid.Column="1">
+                            <!-- Наименование товара:  -->
+                            <TextBlock Text="{Binding Name,
+                            StringFormat={} {0}}"
+                                   TextWrapping="Wrap" FontSize="17"  FontWeight="Bold">
+                            </TextBlock>
+                            <!-- Описание товара:  -->
+                            <TextBlock Text="{Binding Name,
+                            StringFormat={} {0}}"
+                                   TextWrapping="Wrap" FontSize="17"></TextBlock>
+                            <TextBlock Text="{Binding Name,
+                            StringFormat={} Производитель: {0}}"
+                                   TextWrapping="Wrap" FontSize="17"></TextBlock>
+                            <TextBlock Text="{Binding Date,
+                            StringFormat={} Цена:{0}}"
+                                   TextWrapping="Wrap"></TextBlock>
+                            <!-- Наличие на складе -->
+                            <TextBlock Background="Green" Text="4"/>
+
+
+
+
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackPanel Orientation="Horizontal" Grid.Row="2" 
+                HorizontalAlignment="Center" Width="300">
+            <Button x:Name="JoinButton" Content="Добавить в корзину"
+                Width="140" Margin="5" Click="JoinButton_Click" />
+            <Button x:Name="LoginButton" Content="Авторизоваться" 
+            Click="LoginButton_Click" Width="140" Margin="5"/>
+
+        </StackPanel>
     </Grid>
 </Page>

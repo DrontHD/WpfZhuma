@@ -24,5 +24,20 @@ namespace WpfApp.Pages
         {
             InitializeComponent();
         }
+
+        private void PriceComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void CreatorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void NameTextBox_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

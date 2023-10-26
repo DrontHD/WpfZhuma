@@ -26,9 +26,9 @@ namespace WpfApp.Pages
             InitializeComponent();
         }
 
-        private void RegButton_Click(object sender, RoutedEventArgs e)
+        private void GuestButton_Click(object sender, RoutedEventArgs e)
         {
-            Classes.Manager.MainFrame.Navigate(new Pages.RegisterPage());
+            Classes.Manager.MainFrame.Navigate(new Pages.StorePage());
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
