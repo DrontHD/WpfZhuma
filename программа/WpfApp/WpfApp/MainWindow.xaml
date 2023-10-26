@@ -19,8 +19,11 @@
             <Label Content="ООО «Посуда»" FontSize="25" />
             <Image Margin="50,0,0,0" Source="Resources/logo.png" Height="45"/>
             <!--Скрытая панель ФИО текущего пользователя-->
-            <Label x:Name="currentAccountLabel" Margin="0,0,50,0" HorizontalAlignment="Right" Visibility="Hidden"></Label>
+            <Label x:Name="currentAccountLabel" Margin="0,0,50,0" 
+                   HorizontalAlignment="Right" Visibility="Hidden"></Label>
         </Grid>
-        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Grid.Row="1"></Frame>
+        <Frame x:Name="MainFrame"
+               NavigationUIVisibility="Hidden" Grid.Row="1" 
+               LoadCompleted="MainFrame_LoadCompleted"></Frame>
     </Grid>
 </Window>

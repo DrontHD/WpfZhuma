@@ -33,7 +33,19 @@ namespace WpfApp
             string lastname = Classes.Manager.CurrentUser.LastName;
             string firstname = Classes.Manager.CurrentUser.FirstName;
             string middlename = Classes.Manager.CurrentUser.MiddleName;
+            currentAccountLabel.Visibility = Visibility.Visible;
             currentAccountLabel.Content = $"{lastname} {firstname} {middlename}";
+        }
+
+        private void MainFrame_LoadCompleted(object sender, NavigationEventArgs e)
+        {
+            if (Classes.Manager.CurrentUser != null)
+            {
+                ShowCurrentUser();
+            } else
+            {
+                currentAccountLabel.Visibility = Visibility.Hidden;
+            }
         }
     }
 }

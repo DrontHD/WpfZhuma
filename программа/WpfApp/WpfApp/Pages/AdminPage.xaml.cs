@@ -59,6 +59,7 @@ namespace WpfApp.Pages
             {
                 Classes.Manager.MainFrame.GoBack();
             }
+            Classes.Manager.CurrentUser = null;
         }
 
         private void RegButton_Click(object sender, RoutedEventArgs e)

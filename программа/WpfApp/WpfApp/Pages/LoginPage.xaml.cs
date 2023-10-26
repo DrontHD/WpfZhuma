@@ -24,6 +24,7 @@ namespace WpfApp.Pages
         public LoginPage()
         {
             InitializeComponent();
+            Classes.Manager.CurrentUser = null;
         }
 
         private void GuestButton_Click(object sender, RoutedEventArgs e)

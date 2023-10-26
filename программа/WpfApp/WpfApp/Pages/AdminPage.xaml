@@ -11,9 +11,9 @@
     <Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <Label x:Name="Greeting"></Label>
-            <Button x:Name="RegButton" Click="RegButton_Click" 
+            <Button x:Name="AddProductButton" Click="AddProductButton_Click" 
                     Content="Добавить продукт"></Button>
-            <Button x:Name="AddProductButton" Click="AddProductButton_Click"
+            <Button x:Name="RegButton" Click="RegButton_Click"
                     Content="Зарегистрировать пользователя"></Button>
             <Button x:Name="GoBackButton" Content="Вернутся назад" 
                     Click="GoBackButton_Click" Width="300"></Button>
