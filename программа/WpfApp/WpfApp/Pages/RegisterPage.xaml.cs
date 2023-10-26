@@ -25,7 +25,13 @@ namespace WpfApp.Pages
         {
             InitializeComponent();
 
-            RoleComboBox.ItemsSource = Data.PosudaDBEntities.GetContext().Employee_role.ToList();
+            try
+            {
+                RoleComboBox.ItemsSource = Data.PosudaDBEntities.GetContext().Employee_role.ToList();
+            } catch {
+                MessageBox.Show("Ошибка подключение к базе данных!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            
         }
 
         private void registrationButton_Click(object sender, RoutedEventArgs e)
