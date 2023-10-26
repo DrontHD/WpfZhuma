@@ -29,9 +29,9 @@ namespace WpfApp.Pages
             try
             {
                 int currHour = Convert.ToInt32(DateTime.Now.ToString("HH"));
-                string lastname = Classes.Manager.CurrentUser.Last_name.ToString();
-                string firstname = Classes.Manager.CurrentUser.First_name.ToString();
-                string middlename = Classes.Manager.CurrentUser.Middle_name.ToString();
+                string lastname = Classes.Manager.CurrentUser.LastName.ToString();
+                string firstname = Classes.Manager.CurrentUser.FirstName.ToString();
+                string middlename = Classes.Manager.CurrentUser.MiddleName.ToString();
                 if (currHour >= 0 && currHour < 6)
                 {
                     Greeting.Content = $"Доброй ночи, {lastname} {firstname} {middlename}!";

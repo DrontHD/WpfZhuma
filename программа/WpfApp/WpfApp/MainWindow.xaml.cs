@@ -30,9 +30,9 @@ namespace WpfApp
         // TODO: Не работает отображение пользователя
         public void ShowCurrentUser()
         {
-            string lastname = Classes.Manager.CurrentUser.Last_name;
-            string firstname = Classes.Manager.CurrentUser.First_name;
-            string middlename = Classes.Manager.CurrentUser.Middle_name;
+            string lastname = Classes.Manager.CurrentUser.LastName;
+            string firstname = Classes.Manager.CurrentUser.FirstName;
+            string middlename = Classes.Manager.CurrentUser.MiddleName;
             currentAccountLabel.Content = $"{lastname} {firstname} {middlename}";
         }
     }

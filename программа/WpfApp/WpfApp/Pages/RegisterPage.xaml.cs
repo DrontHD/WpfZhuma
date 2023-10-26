@@ -27,7 +27,7 @@ namespace WpfApp.Pages
 
             try
             {
-                RoleComboBox.ItemsSource = Data.PosudaDBEntities.GetContext().Employee_role.ToList();
+                RoleComboBox.ItemsSource = Data.PosudaDBEntities.GetContext().Role.ToList();
             } catch {
                 MessageBox.Show("Ошибка подключение к базе данных!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -71,17 +71,17 @@ namespace WpfApp.Pages
                     return;
                 }
 
-                var temp = RoleComboBox.SelectedItem as Data.Employee_role;
-                var selectedItem = Data.PosudaDBEntities.GetContext().Employee_role.Where(d => d.Role == temp.Role).FirstOrDefault();
+                var temp = RoleComboBox.SelectedItem as Data.Role;
+                var selectedItem = Data.PosudaDBEntities.GetContext().Role.Where(d => d.Name == temp.Name).FirstOrDefault();
 
                 Data.Staff staff = new Data.Staff()
                 {
-                    Last_name = LastnameTextBox.Text,
-                    First_name = FirstnameTextBox.Text,
-                    Middle_name = MiddlenameTextBox.Text,
+                    LastName = LastnameTextBox.Text,
+                    FirstName = FirstnameTextBox.Text,
+                    MiddleName = MiddlenameTextBox.Text,
                     Login = LoginTextBox.Text,
                     Password = PasswordBox.Password,
-                    ID_Role = selectedItem.Id
+                    IdRole = selectedItem.Id
                 };
 
                 Data.PosudaDBEntities.GetContext().Staff.Add(staff);

@@ -58,7 +58,7 @@ namespace WpfApp.Pages
                     Classes.Manager.CurrentUser = Data.PosudaDBEntities.GetContext().Staff
                         .Where(d => d.Login == LoginTextBox.Text && d.Password == PasswordBox.Password).FirstOrDefault();
                     MessageBox.Show("Успешный вход", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
-                    switch (Classes.Manager.CurrentUser.ID_Role)
+                    switch (Classes.Manager.CurrentUser.IdRole)
                     {
                         case 1: //Администратор
                             Classes.Manager.MainFrame.Navigate(new Pages.AdminPage());

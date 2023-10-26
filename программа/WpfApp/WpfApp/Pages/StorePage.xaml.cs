@@ -39,5 +39,15 @@ namespace WpfApp.Pages
         {
 
         }
+
+        private void AddToCartButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

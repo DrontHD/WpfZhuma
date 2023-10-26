@@ -84,8 +84,8 @@
         </ListView>
         <StackPanel Orientation="Horizontal" Grid.Row="2" 
                 HorizontalAlignment="Center" Width="300">
-            <Button x:Name="JoinButton" Content="Добавить в корзину"
-                Width="140" Margin="5" Click="JoinButton_Click" />
+            <Button x:Name="AddToCartButton" Content="Добавить в корзину"
+                Width="140" Margin="5" Click="AddToCartButton_Click" />
             <Button x:Name="LoginButton" Content="Авторизоваться" 
             Click="LoginButton_Click" Width="140" Margin="5"/>
 

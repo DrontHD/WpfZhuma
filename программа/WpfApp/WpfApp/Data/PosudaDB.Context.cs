@@ -19,6 +19,16 @@ namespace WpfApp.Data
             : base("name=PosudaDBEntities")
         {
         }
+
+        public static PosudaDBEntities _context;
+
+        public static PosudaDBEntities GetContext()
+        {
+            if (_context == null)
+            {
+                _context = new PosudaDBEntities();
+            } return _context;
+        }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
