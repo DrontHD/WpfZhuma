@@ -28,7 +28,7 @@
 
 | Участник | Фамилия, имя | Роль | Ответственный за |
 | ------ | ------ |------ |------ |
-| [DrontHD](https://github.com/DrontHD) | Ромашков Дмитрий | Project manager, developer | Поддержание командного настроя, распределение задач, разработку логики программы |
+| [DrontHD](https://github.com/DrontHD) | Ромашков Дмитрий | Project manager, developer | Распределение задач, разработку логики программы, разработка струтуры базы данных |
 | [hekkiii](https://github.com/hekkiii) | Горданов Даниил | Developer | Разработку логики программы, обслуживание и поддержка работоспособности программы |
 | [ShestakovTema](https://github.com/ShestakovTema) | Шестаков Артем | Designer, developer |  Дизайн программы, разработку диаграммы Ганта |
-| [PrivetKotlet](https://github.com/PrivetKotlet) | Федоров Руслан | Database Developer | Разработку структуры базы данных, наполнение базы данных |
+| [PrivetKotlet](https://github.com/PrivetKotlet) | Федоров Руслан | Database Developer | Разработку структуры базы данных, нормализация данных, наполнение базы данных |
