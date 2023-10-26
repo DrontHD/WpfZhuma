@@ -60,5 +60,15 @@ namespace WpfApp.Pages
                 Classes.Manager.MainFrame.GoBack();
             }
         }
+
+        private void RegButton_Click(object sender, RoutedEventArgs e)
+        {
+            Classes.Manager.MainFrame.Navigate(new Pages.RegisterPage());
+        }
+
+        private void AddProductButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

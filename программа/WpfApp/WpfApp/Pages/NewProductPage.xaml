@@ -1,4 +1,4 @@
-﻿<Page x:Class="WpfApp.Pages.AdminPage"
+﻿<Page x:Class="WpfApp.Pages.NewProductPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,17 +6,12 @@
       xmlns:local="clr-namespace:WpfApp.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Страница администратора">
+      Title="NewProductPage">
 
     <Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Label x:Name="Greeting"></Label>
-            <Button x:Name="RegButton" Click="RegButton_Click" 
-                    Content="Добавить продукт"></Button>
-            <Button x:Name="AddProductButton" Click="AddProductButton_Click"
-                    Content="Зарегистрировать пользователя"></Button>
             <Button x:Name="GoBackButton" Content="Вернутся назад" 
-                    Click="GoBackButton_Click" Width="300"></Button>
+             Click="GoBackButton_Click" Width="300"></Button>
         </StackPanel>
     </Grid>
 </Page>
