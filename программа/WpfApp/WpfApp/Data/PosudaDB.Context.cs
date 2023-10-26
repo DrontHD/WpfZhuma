@@ -19,29 +19,21 @@ namespace WpfApp.Data
             : base("name=PosudaDBEntities")
         {
         }
-
-        public static PosudaDBEntities _PosudaDBEntities;
-
-        public static PosudaDBEntities GetContext()
-        {
-            if (_PosudaDBEntities == null)
-            {
-                _PosudaDBEntities = new PosudaDBEntities();
-            }
-            return _PosudaDBEntities;
-        }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Employee_role> Employee_role { get; set; }
+        public virtual DbSet<Manufacturer> Manufacturer { get; set; }
+        public virtual DbSet<OrderInformation> OrderInformation { get; set; }
         public virtual DbSet<Orders> Orders { get; set; }
-        public virtual DbSet<Points_Issuance> Points_Issuance { get; set; }
-        public virtual DbSet<Product_Categories> Product_Categories { get; set; }
+        public virtual DbSet<PointsIssuance> PointsIssuance { get; set; }
+        public virtual DbSet<ProductCategory> ProductCategory { get; set; }
+        public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<Staff> Staff { get; set; }
-        public virtual DbSet<Order_Information> Order_Information { get; set; }
+        public virtual DbSet<Supplier> Supplier { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Warehouse> Warehouse { get; set; }
     }
 }

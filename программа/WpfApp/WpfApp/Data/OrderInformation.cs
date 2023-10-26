@@ -12,19 +12,14 @@ namespace WpfApp.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Orders
+    public partial class OrderInformation
     {
+        public string IdOrder { get; set; }
+        public string Product { get; set; }
+        public int Quantity { get; set; }
         public int Id { get; set; }
-        public Nullable<System.DateTime> OrderDate { get; set; }
-        public Nullable<System.DateTime> DeliveryDate { get; set; }
-        public int PointsIssuance { get; set; }
-        public string LastName { get; set; }
-        public string FirstName { get; set; }
-        public string MiddleName { get; set; }
-        public Nullable<int> CodeGet { get; set; }
-        public Nullable<bool> Status { get; set; }
     
-        public virtual OrderInformation OrderInformation { get; set; }
-        public virtual PointsIssuance PointsIssuance1 { get; set; }
+        public virtual Warehouse Warehouse { get; set; }
+        public virtual Orders Orders { get; set; }
     }
 }

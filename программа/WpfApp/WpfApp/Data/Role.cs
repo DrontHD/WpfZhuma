@@ -12,30 +12,18 @@ namespace WpfApp.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Warehouse
+    public partial class Role
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Warehouse()
+        public Role()
         {
-            this.OrderInformation = new HashSet<OrderInformation>();
+            this.Staff = new HashSet<Staff>();
         }
     
-        public string Article { get; set; }
-        public string ProductName { get; set; }
-        public string Unit { get; set; }
-        public Nullable<decimal> Price { get; set; }
-        public int MaxDiscount { get; set; }
-        public Nullable<int> IdManufacturer { get; set; }
-        public Nullable<int> IdSupplier { get; set; }
-        public Nullable<int> IdProductCategory { get; set; }
-        public Nullable<int> CurrentDiscount { get; set; }
-        public Nullable<int> QuantityInStock { get; set; }
-        public string Description { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
     
-        public virtual Manufacturer Manufacturer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderInformation> OrderInformation { get; set; }
-        public virtual ProductCategory ProductCategory { get; set; }
-        public virtual Supplier Supplier { get; set; }
+        public virtual ICollection<Staff> Staff { get; set; }
     }
 }

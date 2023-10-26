@@ -15,13 +15,13 @@ namespace WpfApp.Data
     public partial class Staff
     {
         public int ID { get; set; }
-        public string Last_name { get; set; }
-        public string First_name { get; set; }
-        public string Middle_name { get; set; }
+        public string LastName { get; set; }
+        public string FirstName { get; set; }
+        public string MiddleName { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
-        public int ID_Role { get; set; }
+        public int IdRole { get; set; }
     
-        public virtual Employee_role Employee_role { get; set; }
+        public virtual Role Role { get; set; }
     }
 }

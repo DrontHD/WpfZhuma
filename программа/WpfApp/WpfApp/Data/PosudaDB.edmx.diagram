@@ -4,18 +4,24 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="09fbafeac49145dfab2c23f98de12ad5" Name="Diagram1">
-        <EntityTypeShape EntityType="PosudaDBModel.Employee_role" Width="1.5" PointX="5.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="PosudaDBModel.Orders" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="PosudaDBModel.Points_Issuance" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="PosudaDBModel.Product_Categories" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="PosudaDBModel.Staff" Width="1.5" PointX="8" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PosudaDBModel.Order_Information" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PosudaDBModel.Warehouse" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
-        <AssociationConnector Association="PosudaDBModel.FK_Staff_Employee_role" ManuallyRouted="false" />
-        <AssociationConnector Association="PosudaDBModel.FK_Order_Information_Orders" ManuallyRouted="false" />
+      <Diagram DiagramId="d93e3a8f80a7461e8c3be164a154253a" Name="Diagram1" ZoomLevel="40">
+        <EntityTypeShape EntityType="PosudaDBModel.Manufacturer" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PosudaDBModel.OrderInformation" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PosudaDBModel.Orders" Width="1.5" PointX="7.5" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PosudaDBModel.PointsIssuance" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PosudaDBModel.ProductCategory" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PosudaDBModel.Role" Width="1.5" PointX="7.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PosudaDBModel.Staff" Width="1.5" PointX="10" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PosudaDBModel.Supplier" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PosudaDBModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PosudaDBModel.Warehouse" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <AssociationConnector Association="PosudaDBModel.FK_Warehouse_Manufacturers" ManuallyRouted="false" />
+        <AssociationConnector Association="PosudaDBModel.FK_Order_Information_Warehouse" ManuallyRouted="false" />
+        <AssociationConnector Association="PosudaDBModel.FK_Orders_Order_Information" ManuallyRouted="false" />
         <AssociationConnector Association="PosudaDBModel.FK_Orders_Points_Issuance" ManuallyRouted="false" />
         <AssociationConnector Association="PosudaDBModel.FK_Warehouse_Product_categories" ManuallyRouted="false" />
+        <AssociationConnector Association="PosudaDBModel.FK_Staff_Employee_role" ManuallyRouted="false" />
+        <AssociationConnector Association="PosudaDBModel.FK_Warehouse_Suppliers" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
