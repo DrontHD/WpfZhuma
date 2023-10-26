@@ -19,8 +19,13 @@
             <Label Content="ООО «Посуда»" FontSize="25" />
             <Image Margin="50,0,0,0" Source="Resources/logo.png" Height="45"/>
             <!--Скрытая панель ФИО текущего пользователя-->
-            <Label x:Name="currentAccountLabel" Margin="0,0,50,0" 
-                   HorizontalAlignment="Right" Visibility="Hidden"></Label>
+            <StackPanel HorizontalAlignment="Right" Margin="0,0,20,0" Orientation="Horizontal">
+                <Label x:Name="currentAccountLabel"  
+                     Visibility="Hidden"></Label>
+                <Button Content="Выйти" x:Name="LogOutButton"
+                    Click="LogOutButton_Click" Visibility="Hidden"/>
+            </StackPanel>
+            
         </Grid>
         <Frame x:Name="MainFrame"
                NavigationUIVisibility="Hidden" Grid.Row="1" 

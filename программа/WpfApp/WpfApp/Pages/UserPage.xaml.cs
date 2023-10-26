@@ -61,6 +61,7 @@ namespace WpfApp.Pages
             {
                 Classes.Manager.MainFrame.GoBack();
             }
+            Classes.Manager.CurrentUser = null;
         }
     }
 }
