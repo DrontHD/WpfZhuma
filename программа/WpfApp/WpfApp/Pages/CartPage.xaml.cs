@@ -49,10 +49,9 @@ namespace WpfApp.Pages
                         el.Counter += 1;
                         return;
                     }
-                }
-                UpdateCart();
-                
+                }                
             }
+            UpdateCart();
         }
 
         private void MinusProductButton_Click(object sender, RoutedEventArgs e)
@@ -73,9 +72,8 @@ namespace WpfApp.Pages
                         return;
                     }
                 }
-                UpdateCart();
-
             }
+            UpdateCart();
         }
 
         private void MakeOrderButton_Click(object sender, RoutedEventArgs e)
@@ -111,9 +109,9 @@ namespace WpfApp.Pages
                         Classes.Manager.CartList.Remove(el);
                     }
                 }
-                UpdateCart();
 
             }
+            UpdateCart();
         }
     }
 }
