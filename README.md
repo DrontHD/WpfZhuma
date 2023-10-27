@@ -33,4 +33,4 @@
 | [hekkiii](https://github.com/hekkiii) | Горданов Даниил | Developer | Разработка логики программы, обслуживание и поддержка работоспособности программы |
 | [ShestakovTema](https://github.com/ShestakovTema) | Шестаков Артем | Designer, developer |  Дизайн программы, разработка диаграммы Ганта |
 | [PrivetKotlet](https://github.com/PrivetKotlet) | Федоров Руслан | Database Developer | Разработка структуры базы данных, нормализация данных, наполнение базы данных |
-| [4undu](https://github.com/4undu) | Муртазов Даниэль | Tester | Тестирование, написание тест-кесов, создание UseCase-диаграммы
+| [4undu](https://github.com/4undu) | Муртазов Даниэль | Tester/QA-engineer | Тестирование, написание тест-кейсов, создание UseCase-диаграммы
