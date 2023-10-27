@@ -64,11 +64,11 @@ namespace WpfApp.Pages
                         case 1: //Администратор
                             Classes.Manager.MainFrame.Navigate(new Pages.AdminPage());
                             break;
-                        case 2: //Клиент
-                            Classes.Manager.MainFrame.Navigate(new Pages.UserPage());
-                            break;
-                        case 3: //Менеджер
+                        case 2: //Менеджер
                             Classes.Manager.MainFrame.Navigate(new Pages.ManagerPage());
+                            break;
+                        case 3: //Клиент
+                            Classes.Manager.MainFrame.Navigate(new Pages.UserPage());
                             break;
                     }
                 }
