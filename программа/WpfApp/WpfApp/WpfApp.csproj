@@ -263,6 +263,18 @@
       <DependentUpon>PosudaDB.edmx</DependentUpon>
       <LastGenOutput>PosudaDB.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\productImages\D036H2.jpg" />
+    <Resource Include="Resources\productImages\D548T5.jpg" />
+    <Resource Include="Resources\productImages\D644G3.jpg" />
+    <Resource Include="Resources\productImages\F735F5.jpg" />
+    <Resource Include="Resources\productImages\F835F5.jpg" />
+    <Resource Include="Resources\productImages\F836E5.jpg" />
+    <Resource Include="Resources\productImages\H482Y6.jpg" />
+    <Resource Include="Resources\productImages\N835D4.jpg" />
+    <Resource Include="Resources\productImages\N835F5.jpg" />
+    <Resource Include="Resources\productImages\А112Т4.jpg" />
+    <Resource Include="Resources\productPhoto.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

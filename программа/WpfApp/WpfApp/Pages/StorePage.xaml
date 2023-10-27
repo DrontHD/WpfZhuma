@@ -52,8 +52,8 @@
                             <ColumnDefinition Width="500"></ColumnDefinition>
                             <ColumnDefinition Width="150"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Image Source="{Binding ImageData}"
-                           Grid.Column="0"
+                        <Image Source="/Resources/productPhoto.jpg"
+                           Grid.Column="0" Height="200" Width="200"
                            Margin="10"></Image>
                         <StackPanel Orientation="Vertical" 
                                 Grid.Column="1">

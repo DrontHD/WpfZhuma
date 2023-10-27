@@ -30,12 +30,11 @@ namespace WpfApp.Pages
             ManufacturerComboBox.ItemsSource = tempManufacturer;
             ManufacturerComboBox.SelectedIndex = 0;
 
+
             PriceComboBox.Items.Add("Без сортировки");
             PriceComboBox.Items.Add("По возрастанию");
             PriceComboBox.Items.Add("По убыванию");
             PriceComboBox.SelectedIndex = 0;
-
-
 
         }
 
