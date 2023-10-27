@@ -27,23 +27,22 @@
                   ></TextBox>
             <!-- Сортировка по цене:  -->
             <ComboBox x:Name="PriceComboBox" 
-                  DisplayMemberPath="Name"
                   HorizontalAlignment="Right"
                   Width="150"
                   Margin="0,0,200,0"
                   SelectionChanged="PriceComboBox_SelectionChanged"
                   ></ComboBox>
             <!-- Сортировка по производителю:  -->
-            <ComboBox x:Name="CreatorComboBox" 
-                  DisplayMemberPath="Name"
+            <ComboBox x:Name="ManufacturerComboBox" 
+                  DisplayMemberPath="Manufacturer"
                   HorizontalAlignment="Right"
                   Width="150"
                   Margin="0,0,20,0"
-                  SelectionChanged="CreatorComboBox_SelectionChanged"
+                  SelectionChanged="ManufacturerComboBox_SelectionChanged"
                   ></ComboBox>
 
         </Grid>
-        <ListView x:Name="EventListView"
+        <ListView x:Name="StoreListView"
               Grid.Row="1" Margin="10">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -71,13 +70,10 @@
                             <TextBlock Text="{Binding Price,
                             StringFormat={} Цена:{0}}"
                                    TextWrapping="Wrap"></TextBlock>
-                            <!-- Наличие на складе -->
-                            <TextBlock Background="Green" Text="4"/>
-
-
-
-
                         </StackPanel>
+                        <!-- Наличие на складе -->
+                        <TextBlock  Grid.Column="2" 
+                                   Text="{Binding QuantityInStock,StringFormat={} На складе: {0}}"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

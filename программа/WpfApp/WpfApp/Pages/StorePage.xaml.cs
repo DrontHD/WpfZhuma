@@ -23,6 +23,14 @@ namespace WpfApp.Pages
         public StorePage()
         {
             InitializeComponent();
+            StoreListView.ItemsSource = Data.PosudaDBEntities.GetContext().Warehouse.ToList();
+
+            var tempManufacturer = Data.PosudaDBEntities.GetContext().Warehouse.ToList();
+            tempManufacturer.Insert(0, new Data.Warehouse { ProductName = "Все производители" });
+            ManufacturerComboBox.ItemsSource = tempManufacturer;
+            ManufacturerComboBox.SelectedIndex = 0;
+
+            
         }
 
         private void PriceComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -30,7 +38,7 @@ namespace WpfApp.Pages
 
         }
 
-        private void CreatorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ManufacturerComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
@@ -42,12 +50,20 @@ namespace WpfApp.Pages
 
         private void AddToCartButton_Click(object sender, RoutedEventArgs e)
         {
-
+            
+            var selectedEl = StoreListView.SelectedItem as Data.Warehouse;
+            if (selectedEl != null)
+            {
+                MessageBox.Show($"Вы добавили {selectedEl.ProductName}-{selectedEl.Article} в корзину", "Запись выполнена!", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            
+            
+            
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Classes.Manager.MainFrame.Navigate(new Pages.LoginPage());
         }
     }
 }
