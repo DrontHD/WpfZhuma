@@ -78,13 +78,16 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <StackPanel Orientation="Horizontal" Grid.Row="2" 
-                HorizontalAlignment="Center" Width="300">
-            <Button x:Name="AddToCartButton" Content="Добавить в корзину"
-                Width="140" Margin="5" Click="AddToCartButton_Click" />
-            <Button x:Name="LoginButton" Content="Авторизоваться" 
-            Click="LoginButton_Click" Width="140" Margin="5"/>
+        <Button HorizontalAlignment="Center" Grid.Row="2" Width="150" 
+                x:Name="AddToCartButton" Content="Добавить в корзину"
+                 Margin="5" Click="AddToCartButton_Click" />
+        <Button HorizontalAlignment="Right" Grid.Row="2" Width="130"
+                x:Name="LoginButton" Content="Авторизоваться" 
+            Click="LoginButton_Click"  Margin="5"/>
+        <Button HorizontalAlignment="Left" Grid.Row="2" Width="130" 
+                x:Name="GoBackButton" Content="Вернутся назад" 
+                    Click="GoBackButton_Click" ></Button>
 
-        </StackPanel>
+        
     </Grid>
 </Page>

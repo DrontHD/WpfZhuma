@@ -118,5 +118,13 @@ namespace WpfApp.Pages
         {
             Classes.Manager.MainFrame.Navigate(new Pages.LoginPage());
         }
+
+        private void GoBackButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (Classes.Manager.MainFrame.CanGoBack)
+            {
+                Classes.Manager.MainFrame.GoBack();
+            }
+        }
     }
 }

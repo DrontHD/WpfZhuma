@@ -63,5 +63,15 @@ namespace WpfApp.Pages
             }
             Classes.Manager.CurrentUser = null;
         }
+
+        private void StoreButton_Click(object sender, RoutedEventArgs e)
+        {
+            Classes.Manager.MainFrame.Navigate(new Pages.StorePage());
+        }
+
+        private void CartButton_Click(object sender, RoutedEventArgs e)
+        {
+            Classes.Manager.MainFrame.Navigate(new Pages.CartPage());
+        }
     }
 }

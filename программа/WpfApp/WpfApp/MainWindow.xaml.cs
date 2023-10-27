@@ -31,9 +31,11 @@ namespace WpfApp
         public void ShowCurrentUser()
         {
             string firstname = Classes.Manager.CurrentUser.FirstName;
+            string lastname = Classes.Manager.CurrentUser.LastName;
+            string middlename = Classes.Manager.CurrentUser.MiddleName;
             currentAccountLabel.Visibility = Visibility.Visible;
             LogOutButton.Visibility = Visibility.Visible;
-            currentAccountLabel.Content = $"{firstname}";
+            currentAccountLabel.Content = $"{lastname} {firstname} {middlename}";
         }
 
         private void MainFrame_LoadCompleted(object sender, NavigationEventArgs e)
