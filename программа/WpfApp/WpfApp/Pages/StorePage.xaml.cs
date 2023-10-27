@@ -110,6 +110,13 @@ namespace WpfApp.Pages
                 if (Classes.Manager.CurrentUser != null)
                 {
                     MessageBox.Show($"Вы добавили {selectedEl.ProductName}-{selectedEl.Article} в корзину", "Запись выполнена!", MessageBoxButton.OK, MessageBoxImage.Information);
+                    if (Classes.Manager.UserCart.ContainsKey(selectedEl))
+                    {
+                        Classes.Manager.UserCart[selectedEl] += 1;
+                    } else
+                    {
+                        Classes.Manager.UserCart.Add(selectedEl, 1);
+                    }
                     /* TODO: Сделать добавление в корзину в Classes.Manager.UserCart*/
                 } else
                 {
