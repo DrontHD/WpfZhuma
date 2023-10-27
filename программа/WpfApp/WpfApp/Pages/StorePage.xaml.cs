@@ -38,19 +38,53 @@ namespace WpfApp.Pages
 
         }
 
+        public List<Data.Warehouse> _products = Data.PosudaDBEntities.GetContext().Warehouse.ToList();
+
+        public void UpdateStore()
+        {
+            try
+            {
+                _products = Data.PosudaDBEntities.GetContext().Warehouse.ToList();
+                if (ManufacturerComboBox.SelectedItem != null)
+                {
+                    var selectedItemDirection = ManufacturerComboBox.SelectedItem as Data.Manufacturer;
+                    if (selectedItemDirection.Name != "Все производители")
+                    {
+                        _products = _products.Where(d => d.Manufacturer.Name == selectedItemDirection.Name).ToList();
+                    }
+                }
+                if(PriceComboBox.SelectedItem != null)
+                {
+                    string selectedItemPrice = PriceComboBox.SelectedItem as string;
+                    if (selectedItemPrice == "По возрастанию")
+                    {
+                        _products = _products.OrderBy(d => d.Price).ToList();
+                    }
+                    if (selectedItemPrice == "По убыванию")
+                    {
+                        _products = _products.OrderByDescending(d => d.Price).ToList();
+                    }
+                }
+                
+                StoreListView.ItemsSource = _products;
+
+
+            }
+            catch (Exception) { }
+        }
         private void PriceComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            UpdateStore();
         }
 
         private void ManufacturerComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            UpdateStore();
         }
 
         private void NameTextBox_SelectionChanged(object sender, RoutedEventArgs e)
         {
-
+            UpdateStore();
         }
 
         private void AddToCartButton_Click(object sender, RoutedEventArgs e)
