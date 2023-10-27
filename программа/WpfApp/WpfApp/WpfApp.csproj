@@ -90,6 +90,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Classes\Cart.cs" />
     <Compile Include="Classes\Manager.cs" />
     <Compile Include="Data\Manufacturer.cs">
       <DependentUpon>PosudaDB.tt</DependentUpon>

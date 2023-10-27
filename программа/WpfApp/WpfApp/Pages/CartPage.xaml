@@ -21,7 +21,7 @@
                         Width="30" Content="+"></Button>
                 <Button x:Name="MinusProductButton" Click="MinusProductButton_Click"
                         Width="30" Content="-"></Button>
-                <Button Content="Удалить"></Button>
+                <Button x:Name="DelProductButton" Content="Удалить" Click="DelProductButton_Click"></Button>
                 
             </StackPanel>
             
@@ -43,13 +43,14 @@
                         <StackPanel Orientation="Vertical" 
                             Grid.Column="1">
                             <!-- Наименование товара:  -->
-                            <TextBlock Text="{Binding ProductName}"
+                            <TextBlock Text="{Binding Name}"
                                TextWrapping="Wrap" FontSize="17"  FontWeight="Bold">
                             </TextBlock>
                             <!-- Описание товара:  -->
-                            <TextBlock Text="{Binding Description}"
+                            <TextBlock Text="{Binding Art,
+                        StringFormat={} Артикл: {0}}"
                                TextWrapping="Wrap" FontSize="17"></TextBlock>
-                            <TextBlock Text="{Binding Manufacturer.Name,
+                            <TextBlock Text="{Binding Manufacturer,
                         StringFormat={} Производитель: {0}}"
                                TextWrapping="Wrap" FontSize="17"></TextBlock>
                             <TextBlock Text="{Binding Price,
@@ -57,8 +58,8 @@
                                TextWrapping="Wrap"></TextBlock>
                         </StackPanel>
                         <!-- Кол-во -->
-                        <TextBlock  Grid.Column="2" 
-                               Text="{Binding Value,StringFormat={} Кол-во: {0}}"/>
+                        <TextBlock Text="{Binding Counter,
+                        StringFormat={} Цена:{0}}" Grid.Column="2"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

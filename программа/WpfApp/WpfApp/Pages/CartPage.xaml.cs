@@ -23,27 +23,33 @@ namespace WpfApp.Pages
         public CartPage()
         {
             InitializeComponent();
-            CartListView.ItemsSource = Data.PosudaDBEntities.GetContext().Warehouse.ToList();
+            CartListView.ItemsSource = Classes.Manager.CartList.ToList();
         }
 
-
-        public List<Data.Warehouse> _products = Data.PosudaDBEntities.GetContext().Warehouse.ToList();
+        public List<Classes.Cart> _products = Classes.Manager.CartList.ToList();
 
         public void UpdateCart()
         {
             try
             {
-                _products = Data.PosudaDBEntities.GetContext().Warehouse.ToList();
+                _products = Classes.Manager.CartList.ToList();
                 CartListView.ItemsSource = _products;
             }
             catch (Exception ) { }
         }
         private void PlusProductButton_Click(object sender, RoutedEventArgs e)
         {
-            var selectedEl = CartListView.SelectedItem as Data.Warehouse;
+            var selectedEl = CartListView.SelectedItem as Classes.Cart;
             if (selectedEl != null)
             {
-                Classes.Manager.UserCart[selectedEl] += 1;
+                foreach(var el in Classes.Manager.CartList)
+                    {
+                    if (el.Art == selectedEl.Art)
+                    {
+                        el.Counter += 1;
+                        return;
+                    }
+                }
                 UpdateCart();
                 
             }
@@ -51,28 +57,35 @@ namespace WpfApp.Pages
 
         private void MinusProductButton_Click(object sender, RoutedEventArgs e)
         {
-            var selectedEl = CartListView.SelectedItem as Data.Warehouse;
+            var selectedEl = CartListView.SelectedItem as Classes.Cart;
             if (selectedEl != null)
             {
-                if (Classes.Manager.UserCart[selectedEl] == 1)
+                foreach (var el in Classes.Manager.CartList)
                 {
-                    MessageBox.Show("Кол-во товара не может быть меньше 1. Если вы хотите удалить товар - нажмите кнопку \"Удалить\"","Ошибка!",MessageBoxButton.OK,MessageBoxImage.Error);
-                } else
-                {
-                    Classes.Manager.UserCart[selectedEl] -= 1;
-                    UpdateCart();
+                    if (el.Art == selectedEl.Art)
+                    {
+                        if (el.Counter == 1)
+                        {
+                            MessageBox.Show("Нельзя сделать кол-во меньше 1. Если хотите удалить товар из корзины, нажмите кнопку \"Удалить\"");
+                            return;
+                        }
+                        el.Counter -= 1;
+                        return;
+                    }
                 }
+                UpdateCart();
+
             }
         }
 
         private void MakeOrderButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Classes.Manager.UserCart != null)
+            if (Classes.Manager.CartList != null)
             {
                 string orderString = "";
-                foreach (var key in Classes.Manager.UserCart.Keys)
+                foreach (var el in Classes.Manager.CartList)
                 {
-                    orderString += $"{key.Article} {key.ProductName} {Classes.Manager.UserCart[key]}";
+                    orderString += $"{el.Art} {el.Name} {el.Counter}";
                 }
                 MessageBox.Show($"{orderString}", "Заказ оформлен!", MessageBoxButton.OK, MessageBoxImage.Information);
             }
@@ -83,6 +96,23 @@ namespace WpfApp.Pages
             if (Classes.Manager.MainFrame.CanGoBack)
             {
                 Classes.Manager.MainFrame.GoBack();
+            }
+        }
+
+        private void DelProductButton_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedEl = CartListView.SelectedItem as Classes.Cart;
+            if (selectedEl != null)
+            {
+                foreach (var el in Classes.Manager.CartList)
+                {
+                    if (el.Art == selectedEl.Art)
+                    {
+                        Classes.Manager.CartList.Remove(el);
+                    }
+                }
+                UpdateCart();
+
             }
         }
     }

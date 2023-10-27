@@ -109,20 +109,26 @@ namespace WpfApp.Pages
             {
                 
                 MessageBox.Show($"Вы добавили {selectedEl.ProductName}-{selectedEl.Article} в корзину", "Запись выполнена!", MessageBoxButton.OK, MessageBoxImage.Information);
-                if (Classes.Manager.UserCart != null) 
+                if (Classes.Manager.CartList != null)
                 {
-                    if (Classes.Manager.UserCart.ContainsKey(selectedEl))
+                    foreach (var el in Classes.Manager.CartList)
                     {
-                        Classes.Manager.UserCart[selectedEl] += 1;
-                    } else
-                    {
-                        Classes.Manager.UserCart.Add(selectedEl, 1);
+                        if (el.Art == selectedEl.Article)
+                        {
+                            el.Counter += 1;
+                            return;
+                        }
                     }
-                } else
-                {
-                    Classes.Manager.UserCart.Add(selectedEl, 1);
+                    Classes.Cart tempCart = new Classes.Cart()
+                    {
+                        Name = selectedEl.ProductName,
+                        Art = selectedEl.Article,
+                        Price = selectedEl.Price.ToString(),
+                        Manufacturer = selectedEl.Manufacturer.Name,
+                        Counter = 1
+                    };
+                    Classes.Manager.CartList.Add(tempCart);
                 }
-                    
                     
             } else
             {
