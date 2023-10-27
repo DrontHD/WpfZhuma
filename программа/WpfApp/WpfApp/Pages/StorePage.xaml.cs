@@ -65,6 +65,20 @@ namespace WpfApp.Pages
                         _products = _products.OrderByDescending(d => d.Price).ToList();
                     }
                 }
+                if(NameTextBox.Text != string.Empty)
+                {
+                    string NameText = NameTextBox.Text;
+                    _products = _products.Where(d=> 
+                    d.Manufacturer.ToString().ToLower().Contains(NameText.ToLower()) ||
+                    d.Supplier.ToString().ToLower().Contains(NameText.ToLower()) ||
+                    d.ProductCategory.ToString().ToLower().Contains(NameText.ToLower()) ||
+                    d.ProductName.ToString().ToLower().Contains(NameText.ToLower()) || 
+                    d.Description.ToString().ToLower().Contains(NameText.ToLower()) || 
+                    d.Price.ToString().ToLower().Contains(NameText.ToLower()) ||
+                    d.Article.ToString().ToLower().Contains(NameText.ToLower())
+                     ).ToList() ;
+
+                }
                 
                 StoreListView.ItemsSource = _products;
 
