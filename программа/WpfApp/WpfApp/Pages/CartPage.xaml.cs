@@ -24,5 +24,15 @@ namespace WpfApp.Pages
         {
             InitializeComponent();
         }
+
+        private void PlusProductButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MinusProductButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

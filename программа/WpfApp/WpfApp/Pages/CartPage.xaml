@@ -9,6 +9,71 @@
       Title="Корзина">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <StackPanel Margin="20,0,0,0" HorizontalAlignment="Left" Orientation="Horizontal">
+                <Button x:Name="PlusProductButton" Click="PlusProductButton_Click"
+                        Width="30" Content="+"></Button>
+                <Button x:Name="MinusProductButton" Click="MinusProductButton_Click"
+                        Width="30" Content="-"></Button>
+                <Button Content="Удалить"></Button>
+                
+            </StackPanel>
+            
+
+        </Grid>
+        <ListView x:Name="StoreListView"
+          Grid.Row="1" Margin="10">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300" ></ColumnDefinition>
+                            <ColumnDefinition Width="500"></ColumnDefinition>
+                            <ColumnDefinition Width="150"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="/Resources/productPhoto.jpg"
+                       Grid.Column="0" Height="200" Width="200"
+                       Margin="10"></Image>
+                        <StackPanel Orientation="Vertical" 
+                            Grid.Column="1">
+                            <!-- Наименование товара:  -->
+                            <TextBlock Text="{Binding ProductName}"
+                               TextWrapping="Wrap" FontSize="17"  FontWeight="Bold">
+                            </TextBlock>
+                            <!-- Описание товара:  -->
+                            <TextBlock Text="{Binding Description}"
+                               TextWrapping="Wrap" FontSize="17"></TextBlock>
+                            <TextBlock Text="{Binding Manufacturer.Name,
+                        StringFormat={} Производитель: {0}}"
+                               TextWrapping="Wrap" FontSize="17"></TextBlock>
+                            <TextBlock Text="{Binding Price,
+                        StringFormat={} Цена:{0}}"
+                               TextWrapping="Wrap"></TextBlock>
+                        </StackPanel>
+                        <!-- Наличие на складе -->
+                        <TextBlock  Grid.Column="2" 
+                               Text="{Binding QuantityInStock,StringFormat={} На складе: {0}}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button HorizontalAlignment="Center" Grid.Row="2" Width="150" 
+            x:Name="AddToCartButton" Content="Добавить в корзину"
+             Margin="5" Click="AddToCartButton_Click" />
+        <Button HorizontalAlignment="Right" Grid.Row="2" Width="130"
+            x:Name="LoginButton" Content="Авторизоваться" 
+        Click="LoginButton_Click"  Margin="5"/>
+        <Button HorizontalAlignment="Left" Grid.Row="2" Width="130" 
+            x:Name="GoBackButton" Content="Вернутся назад" 
+                Click="GoBackButton_Click" ></Button>
+
+
+    
     </Grid>
 </Page>
