@@ -83,7 +83,7 @@ namespace WpfApp.Pages
                 string orderString = "";
                 foreach (var el in Classes.Manager.CartList)
                 {
-                    orderString += $"{el.Art} {el.Name} {el.Counter}";
+                    orderString += $"{el.Name}[{el.Art}]-{el.Counter} шт.\n";
                 }
                 MessageBox.Show($"{orderString}", "Заказ оформлен!", MessageBoxButton.OK, MessageBoxImage.Information);
             }

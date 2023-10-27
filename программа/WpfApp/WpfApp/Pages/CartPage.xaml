@@ -59,7 +59,7 @@
                         </StackPanel>
                         <!-- Кол-во -->
                         <TextBlock Text="{Binding Counter,
-                        StringFormat={} Цена:{0}}" Grid.Column="2"/>
+                        StringFormat={} Кол-во:{0}}" Grid.Column="2"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
