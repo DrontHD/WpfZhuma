@@ -11,5 +11,7 @@ namespace WpfApp.Classes
     {   
         public static Frame MainFrame { get; set; }
         public static Data.Staff CurrentUser { get; set; }
+
+        public static Dictionary<Data.Warehouse, int> UserCart { get; set; }
     }
 }
