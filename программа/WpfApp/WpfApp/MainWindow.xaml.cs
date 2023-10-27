@@ -27,7 +27,6 @@ namespace WpfApp
             Classes.Manager.MainFrame.Navigate(new Pages.LoginPage());
         }
 
-        // TODO: Не работает отображение пользователя
         public void ShowCurrentUser()
         {
             string firstname = Classes.Manager.CurrentUser.FirstName;

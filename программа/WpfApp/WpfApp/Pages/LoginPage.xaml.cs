@@ -53,9 +53,6 @@ namespace WpfApp.Pages
 
                 if (Data.PosudaDBEntities.GetContext().Staff.Any(d => d.Login == LoginTextBox.Text && d.Password == PasswordBox.Password))
                 {
-                    // TODO: При выходе убрать ФИО пользователя, в MainWindow поменять в currentAccountLabel свойство Visability на Hidden
-                    //MainWindow.ShowCurrentUser(); // TODO: не работает
-                    
                     Classes.Manager.CurrentUser = Data.PosudaDBEntities.GetContext().Staff
                         .Where(d => d.Login == LoginTextBox.Text && d.Password == PasswordBox.Password).FirstOrDefault();
                     MessageBox.Show("Успешный вход", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -64,10 +61,7 @@ namespace WpfApp.Pages
                         case 1: //Администратор
                             Classes.Manager.MainFrame.Navigate(new Pages.AdminPage());
                             break;
-                        case 2: //Менеджер
-                            Classes.Manager.MainFrame.Navigate(new Pages.ManagerPage());
-                            break;
-                        case 3: //Клиент
+                        case 2: case 3: //Клиент и менеджер
                             Classes.Manager.MainFrame.Navigate(new Pages.UserPage());
                             break;
                     }
