@@ -34,7 +34,7 @@
                   ></ComboBox>
             <!-- Сортировка по производителю:  -->
             <ComboBox x:Name="ManufacturerComboBox" 
-                  DisplayMemberPath="Manufacturer"
+                  DisplayMemberPath="Name"
                   HorizontalAlignment="Right"
                   Width="150"
                   Margin="0,0,20,0"

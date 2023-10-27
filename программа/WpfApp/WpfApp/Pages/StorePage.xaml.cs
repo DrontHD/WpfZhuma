@@ -25,12 +25,18 @@ namespace WpfApp.Pages
             InitializeComponent();
             StoreListView.ItemsSource = Data.PosudaDBEntities.GetContext().Warehouse.ToList();
 
-            var tempManufacturer = Data.PosudaDBEntities.GetContext().Warehouse.ToList();
-            tempManufacturer.Insert(0, new Data.Warehouse { ProductName = "Все производители" });
+            var tempManufacturer = Data.PosudaDBEntities.GetContext().Manufacturer.ToList();
+            tempManufacturer.Insert(0, new Data.Manufacturer { Name = "Все производители" });
             ManufacturerComboBox.ItemsSource = tempManufacturer;
             ManufacturerComboBox.SelectedIndex = 0;
 
-            
+            PriceComboBox.Items.Add("Без сортировки");
+            PriceComboBox.Items.Add("По возрастанию");
+            PriceComboBox.Items.Add("По убыванию");
+            PriceComboBox.SelectedIndex = 0;
+
+
+
         }
 
         private void PriceComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
