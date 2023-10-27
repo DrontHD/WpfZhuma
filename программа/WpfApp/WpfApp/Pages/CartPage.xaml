@@ -27,7 +27,7 @@
             
 
         </Grid>
-        <ListView x:Name="StoreListView"
+        <ListView x:Name="CartListView"
           Grid.Row="1" Margin="10">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -56,22 +56,22 @@
                         StringFormat={} Цена:{0}}"
                                TextWrapping="Wrap"></TextBlock>
                         </StackPanel>
-                        <!-- Наличие на складе -->
+                        <!-- Кол-во -->
                         <TextBlock  Grid.Column="2" 
-                               Text="{Binding QuantityInStock,StringFormat={} На складе: {0}}"/>
+                               Text="{Binding Value,StringFormat={} Кол-во: {0}}"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button HorizontalAlignment="Center" Grid.Row="2" Width="150" 
-            x:Name="AddToCartButton" Content="Добавить в корзину"
-             Margin="5" Click="AddToCartButton_Click" />
-        <Button HorizontalAlignment="Right" Grid.Row="2" Width="130"
-            x:Name="LoginButton" Content="Авторизоваться" 
-        Click="LoginButton_Click"  Margin="5"/>
-        <Button HorizontalAlignment="Left" Grid.Row="2" Width="130" 
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Width="130" 
             x:Name="GoBackButton" Content="Вернутся назад" 
-                Click="GoBackButton_Click" ></Button>
+                Click="GoBackButton_Click" />
+            <Button  Width="130" Content="Оформить заказ"
+            x:Name="MakeOrderButton" Click="MakeOrderButton_Click"/>
+        </StackPanel>
+        
+        
 
 
     
