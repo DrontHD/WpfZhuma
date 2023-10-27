@@ -107,7 +107,15 @@ namespace WpfApp.Pages
             var selectedEl = StoreListView.SelectedItem as Data.Warehouse;
             if (selectedEl != null)
             {
-                MessageBox.Show($"Вы добавили {selectedEl.ProductName}-{selectedEl.Article} в корзину", "Запись выполнена!", MessageBoxButton.OK, MessageBoxImage.Information);
+                if (Classes.Manager.CurrentUser != null)
+                {
+                    MessageBox.Show($"Вы добавили {selectedEl.ProductName}-{selectedEl.Article} в корзину", "Запись выполнена!", MessageBoxButton.OK, MessageBoxImage.Information);
+                    /* TODO: Сделать добавление в корзину в Classes.Manager.UserCart*/
+                } else
+                {
+                    MessageBox.Show($"Чтобы добавить товар в корзину, необходимо авторизоваться", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                    
             }
             
             
