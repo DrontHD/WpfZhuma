@@ -27,17 +27,32 @@ namespace WpfApp.Pages
 
             try
             {
-                RoleComboBox.ItemsSource = Data.PosudaDBEntities.GetContext().Role.ToList();
+                var tempRole = Data.PosudaDBEntities.GetContext().Role.ToList();
+                tempRole.Insert(0, new Data.Role { Name = "<не выбрано>" });
+                RoleComboBox.ItemsSource = tempRole;
+                RoleComboBox.SelectedIndex = 0;
             } catch {
                 MessageBox.Show("Ошибка подключение к базе данных!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             
         }
 
+        public List<Data.Role> _role = Data.PosudaDBEntities.GetContext().Role.ToList();
+
         private void registrationButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
+                _role = Data.PosudaDBEntities.GetContext().Role.ToList();
+                if (RoleComboBox.SelectedItem != null)
+                {
+                    var selectedItemDirection = RoleComboBox.SelectedItem as Data.Role;
+                    if (selectedItemDirection.Name != "<не выбрано>")
+                    {
+                        _role = _role.Where(d => d.Name == selectedItemDirection.Name).ToList();
+                    }
+                }
+
                 StringBuilder errors = new StringBuilder();
                 
                 if (string.IsNullOrEmpty(LastnameTextBox.Text))
@@ -66,6 +81,8 @@ namespace WpfApp.Pages
                     MessageBox.Show(errors.ToString(), "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
+
+
 
                 var temp = RoleComboBox.SelectedItem as Data.Role;
                 var selectedItem = Data.PosudaDBEntities.GetContext().Role.Where(d => d.Name == temp.Name).FirstOrDefault();

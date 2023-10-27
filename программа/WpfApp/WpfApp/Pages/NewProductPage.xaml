@@ -9,9 +9,43 @@
       Title="NewProductPage">
 
     <Grid>
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="400"></ColumnDefinition>
+            <ColumnDefinition MinWidth="400"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Label Content="Артикул:"></Label>
+            <TextBox x:Name="ArticleTextBox"></TextBox>
+            <Label Content="Название продукта:"></Label>
+            <TextBox x:Name="ProductNameTextBox"></TextBox>
+            <Label Content="Единица измерения:"></Label>
+            <TextBox x:Name="UnitTextBox"></TextBox>
+            <Label Content="Цена:"></Label>
+            <TextBox x:Name="PriceTextBox"></TextBox>
+            <Label Content="Максимальная скидка:"></Label>
+            <TextBox x:Name="MaxDiscountTextBox"></TextBox>
+            <Label Content="Производитель:"></Label>
+            <ComboBox x:Name="ManufacturerComboBox" DisplayMemberPath="Name"></ComboBox>
             <Button x:Name="GoBackButton" Content="Вернутся назад" 
              Click="GoBackButton_Click" Width="300"></Button>
+        </StackPanel>
+        <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Label Content="Поставщик:"></Label>
+            <ComboBox x:Name="SupplierComboBox" DisplayMemberPath="Name"></ComboBox>
+            <Label Content="Категория продукта:"></Label>
+            <ComboBox x:Name="ProductCategoryComboBox" DisplayMemberPath="Name"></ComboBox>
+            <Label Content="Текущая скидка:"></Label>
+            <TextBox x:Name="CurrentDiscountTextBox"></TextBox>
+            <Label Content="Количество на складе"></Label>
+            <TextBox x:Name="QuantityInStockTextBox"></TextBox>
+            <Label Content="Описание товара:"></Label>
+            <TextBox x:Name="DescriptionTextBox"></TextBox>
+            <Button x:Name="AddProductButton" Content="Добавить продукт" 
+             Click="AddProductButton_Click" Width="300"></Button>
         </StackPanel>
     </Grid>
 </Page>

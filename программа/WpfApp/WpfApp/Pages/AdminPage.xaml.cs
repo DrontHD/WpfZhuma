@@ -69,7 +69,7 @@ namespace WpfApp.Pages
 
         private void AddProductButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Classes.Manager.MainFrame.Navigate(new Pages.NewProductPage());
         }
     }
 }
