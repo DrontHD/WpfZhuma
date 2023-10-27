@@ -39,8 +39,8 @@ namespace WpfApp.Pages
             try
             {
                 StringBuilder errors = new StringBuilder();
-                //Мб не нужно
-                /*if (string.IsNullOrEmpty(LastnameTextBox.Text))
+                
+                if (string.IsNullOrEmpty(LastnameTextBox.Text))
                 {
                     errors.AppendLine("Заполните фамилию");
                 }
@@ -48,10 +48,6 @@ namespace WpfApp.Pages
                 {
                     errors.AppendLine("Заполните имя");
                 }
-                if (string.IsNullOrEmpty(MiddlenameTextBox.Text))
-                {
-                    errors.AppendLine("Заполните отчество");
-                }*/
                 if (string.IsNullOrEmpty(LoginTextBox.Text))
                 {
                     errors.AppendLine("Заполните логин");
@@ -74,11 +70,16 @@ namespace WpfApp.Pages
                 var temp = RoleComboBox.SelectedItem as Data.Role;
                 var selectedItem = Data.PosudaDBEntities.GetContext().Role.Where(d => d.Name == temp.Name).FirstOrDefault();
 
+                string tempMiddlename = MiddlenameTextBox.Text;
+                if (MiddlenameTextBox.Text == string.Empty)
+                {
+                    tempMiddlename = null;
+                }
                 Data.Staff staff = new Data.Staff()
                 {
                     LastName = LastnameTextBox.Text,
                     FirstName = FirstnameTextBox.Text,
-                    MiddleName = MiddlenameTextBox.Text,
+                    MiddleName = tempMiddlename,
                     Login = LoginTextBox.Text,
                     Password = PasswordBox.Password,
                     IdRole = selectedItem.Id

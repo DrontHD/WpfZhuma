@@ -9,13 +9,13 @@
       Title="Страница пользователя">
 
     <Grid>
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="300">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" >
             <Label x:Name="Greeting"></Label>
-            <Button x:Name="StoreButton" Content="Перейти в магазин"
+            <Button Width="300" x:Name="StoreButton" Content="Перейти в магазин"
                     Click="StoreButton_Click"   ></Button>
-            <Button x:Name="CartButton" Content="Корзина"
+            <Button Width="300" x:Name="CartButton" Content="Корзина"
                     Click="CartButton_Click"   ></Button>
-            <Button x:Name="GoBackButton" Content="Вернутся назад" 
+            <Button Width="300" x:Name="GoBackButton" Content="Вернутся назад" 
                     Click="GoBackButton_Click" ></Button>
         </StackPanel>
     </Grid>
